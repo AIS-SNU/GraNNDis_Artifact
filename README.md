@@ -52,7 +52,7 @@ We provide a test script (`Codes/brief_masking_test.sh`) to download the dataset
 It will test GraNNDis with default settings.
 ```
 cd Codes
-chmod +x brief-masking_test.sh
+chmod +x brief_masking_test.sh
 ./brief_masking_test.sh
 ```
 While running the script, you may be required to type `y` for downloading a dataset.
