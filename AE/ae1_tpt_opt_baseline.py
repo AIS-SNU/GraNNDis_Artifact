@@ -6,6 +6,8 @@ import torch.multiprocessing as mp
 import select
 import paramiko
 
+import configs
+
 class Commands:
     def __init__(self, retry_time=0):
         self.retry_time = retry_time
@@ -62,13 +64,13 @@ if __name__ == '__main__':
     """
     Set Server Environment
     """
-    env_loc = '/nfs/home/ae/anaconda3/envs/granndis_ae/bin/python'
-    runner_loc = '/nfs/home/ae/GraNNDis_Artifact/Codes/main.py'
-    workspace_loc = '/nfs/home/ae/GraNNDis_Artifact/'
-    data_loc = '~/datasets/granndis_ae/'
-    num_runners = 2
-    gpus_per_server = 4
-    hosts = ['192.168.0.5', '192.168.0.6']
+    env_loc = configs.global_configs['env_loc']
+    runner_loc = configs.global_configs['runner_loc']
+    workspace_loc = configs.global_configs['workspace_loc']
+    data_loc = configs.global_configs['data_loc']
+    num_runners = configs.global_configs['num_runners']
+    gpus_per_server = configs.global_configs['gpus_per_server']
+    hosts = configs.global_configs['hosts']
     assert len(hosts) == num_runners, 'our script requires a host per a runner'
 
     """

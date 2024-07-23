@@ -78,17 +78,20 @@ Rank  0 successfully created summary json log file.
 ## Fast Reproducing of Main Results
 
 Some users may not be familiar with the distributed training procedure, so we provide distributed experiment launchers at `AE/*.py`.
-Before reproducing, users must change the configuration fields in the launchers in `AE/*.py`.
+Before reproducing, users must change the configuration fields in the config file (`AE/configs.py`).
 ```
-env_loc = '/nfs/home/ae/anaconda3/envs/granndis_ae/bin/python'
-runner_loc = '/nfs/home/ae/GraNNDis_Artifact/Codes/main.py'
-workspace_loc = '/nfs/home/ae/GraNNDis_Artifact/'
-data_loc = '~/datasets/granndis_ae/'
-num_runners = 2
-gpus_per_server = 4
-hosts = ['192.168.0.5', '192.168.0.6']
+global_configs = {
+    'env_loc': '/nfs/home/ae/anaconda3/envs/granndis_ae/bin/python',
+    'runner_loc': '/nfs/home/ae/GraNNDis_Artifact/Codes/main.py',
+    'our_runner_loc': '/nfs/home/ae/GraNNDis_Artifact/Codes/our_main.py',
+    'workspace_loc': '/nfs/home/ae/GraNNDis_Artifact/',
+    'data_loc': '~/datasets/granndis_ae/',
+    'num_runners': 2,
+    'gpus_per_server': 4,
+    'hosts': ['192.168.0.5', '192.168.0.6']
+}
 ```
-**For the artifact evaluation process, we already changed the configuration fields for the authors' remote machine.**
+**For the artifact evaluation process, we already changed the configuration file for the authors' remote machine.**
 
 After modification, just run the following commands, which will show the artifact evaluation results.
 ```
