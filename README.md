@@ -100,6 +100,13 @@ sh parse_ae.sh # parse AE results
 ```
 Then, the results will be saved at `AE*_results.log`.
 
+### Expected Trend for the Artifact Evaluation Results
+As the authors' remote machine has a 10GbE inter-server connection, the overall speedup could be higher (up to around 6x) than the paper (up to around 3x), which used 32Gbps Infiniband.
+
+All FLX, CoB (with SAGE sampling), and EAS would generally show significant speedup over the baseline optimized full-batch training because GraNNDis minimizes the slow external server communication (AE1). EAS (FLX-EAS) is expected to show more speedup than FLX, especially in larger datasets, such as Products. EAS usually shows higher speedup than CoB (especially in larger datasets) while providing comparable accuracy, as shown in AE2 (accuracy result).
+
+Please note that the result can fluctuate when the inter-server connection is shared with the cluster's NFS file system. In this case, running multiple trials will show the trend mentioned above.
+
 The following are examples of the results of running the above procedure on the authors' remote machine.
 
 ### AE1. Throughput Results (Flexible Preloading (FLX), Cooperative Batching (CoB), and Expansion-Aware Sampling (EAS))
