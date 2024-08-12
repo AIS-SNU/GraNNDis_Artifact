@@ -6,6 +6,7 @@ Our implementations are mainly based on the original code of PipeGCN.
 For details, please refer to our PACT'24 paper ([Author Copy](PACT24_GraNNDis_Author_Copy.pdf), [Proceeding](https://doi.org/10.1145/3656019.3676892)).
 
 This artifact earned the following badges:
+<img width="35%" src="AE/badges.png" align="right"/>
 - Artifact Available
 - Artifact Evaluated - Reusable
 - Results Reproduced
