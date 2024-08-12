@@ -3,7 +3,7 @@ This repository is the artifact of GraNNDis for PACT'24 artifact evaluation (AE)
 
 Note that this repo provides the SOTA performance on distributed full-batch (full-graph) GNN training even without the GraNNDis schemes from our own optimizations using NCCL.
 Our implementations are mainly based on the original code of PipeGCN.
-For details, please refer to our PACT'24 paper.
+For details, please refer to our PACT'24 paper ([Author Copy](PACT24_GraNNDis_Author_Copy.pdf), [Proceeding](https://doi.org/10.1145/3656019.3676892)).
 
 This artifact earned the following badges:
 - Artifact Available
