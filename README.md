@@ -5,11 +5,10 @@ Note that this repo provides the SOTA performance on distributed full-batch (ful
 Our implementations are mainly based on the original code of PipeGCN.
 For details, please refer to our PACT'24 paper.
 
-## Dear AE Reviewers
-We have prepared the authors' remote machine for the artifact evaluation process.
-The cluster has two servers, each with four NVIDIA RTX A6000 GPUs.
-Internal server GPUs are connected via NVLink Bridge, and servers are connected via 10GbE.
-**When the reviewers request the remote server using HotCRP comments, the authors will provide detailed guidelines for accessing the authors' remote machine as soon as possible.**
+This artifact earned the following badges:
+- Artifact Available
+- Artifact Evaluated - Reusable
+- Results Reproduced
 
 ## Getting Started
 ### 1. SW Dependencies and Setup
@@ -24,13 +23,11 @@ Internal server GPUs are connected via NVLink Bridge, and servers are connected 
   export LD_LIBRARY_PATH="/usr/local/cuda-11.8/lib64:$LD_LIBRARY_PATH"
   nvcc -V # check cuda version using nvcc
   ```
-
 - Main SW Dependencies
   - Python 3.10
   - PyTorch 2.1.0
   - CUDA 11.8
   - DGL 2.1.x
-
 
 - Setup
   ```
@@ -91,7 +88,6 @@ global_configs = {
     'hosts': ['192.168.0.5', '192.168.0.6']
 }
 ```
-**For the artifact evaluation process, we already changed the configuration file for the authors' remote machine.**
 
 After modification, just run the following commands, which will show the artifact evaluation results.
 ```
@@ -100,8 +96,12 @@ sh parse_ae.sh # parse AE results
 ```
 Then, the results will be saved at `AE*_results.log`.
 
-### Expected Trend for the Artifact Evaluation Results
-As the authors' remote machine has a 10GbE inter-server connection, the overall speedup could be higher (up to around 6x) than the paper (up to around 3x), which used 32Gbps Infiniband.
+### Example Test Environment
+The example test cluster has two servers, each with four NVIDIA RTX A6000 GPUs.
+Internal server GPUs are connected via NVLink Bridge, and servers are connected via 10GbE.
+
+### Expected Trend for the Artifact
+As the example test cluster has a 10GbE inter-server connection, the overall speedup could be higher (up to around 6x) than the paper (up to around 3x), which used 32Gbps Infiniband.
 
 All FLX, CoB (with SAGE sampling), and EAS would generally show significant speedup over the baseline optimized full-batch training because GraNNDis minimizes the slow external server communication (AE1). EAS (FLX-EAS) is expected to show more speedup than FLX, especially in larger datasets, such as Products. EAS usually shows higher speedup than CoB (especially in larger datasets) while providing comparable accuracy, as shown in AE2 (accuracy result).
 
@@ -237,4 +237,4 @@ For other codes, the license is also under the MIT license.
 
 ## MISC
 
-For a further breakdown of internal/external communication time, users can utilize the `--check-intra-only` option. This option ignores external server communication, so users can figure out the internal server communication time only.
+For a further breakdown of internal/external communication time, users can utilize the `--check-intra-only` option. This option ignores external server communication, so users can figure out the internal server communication time only. The users also can further minimize the one-hop graph masking overhead through removing `--use-mask` option, but it does not provide the intact algorithm.
